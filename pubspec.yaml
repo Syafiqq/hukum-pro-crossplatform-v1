@@ -41,6 +41,10 @@ dependencies:
 
   # Firebase
   firebase_core: 3.0.0
+  firebase_auth: 5.0.0
+
+  # Misc
+  async: 2.11.0
 
 dev_dependencies:
   flutter_test:
