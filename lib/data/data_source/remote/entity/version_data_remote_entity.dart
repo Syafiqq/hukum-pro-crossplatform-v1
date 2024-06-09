@@ -7,18 +7,33 @@ part 'version_data_remote_entity.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 final class VersionDataRemoteEntity {
   @IntOrStringToIntConverter()
+  final int? id;
+
+  @IntOrStringToIntConverter()
   final int? milis;
 
   @StringOrIntToStringConverter()
   final String? timestamp;
 
   VersionDataRemoteEntity({
+    this.id,
     this.milis,
     this.timestamp,
   });
 
-  factory VersionDataRemoteEntity.fromJson(Map<String, dynamic> json) =>
+  factory VersionDataRemoteEntity.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       _$VersionDataRemoteEntityFromJson(json);
+
+  factory VersionDataRemoteEntity.fromJsonWithId(
+    Map<String, dynamic> json,
+    int id,
+  ) {
+    json['id'] ??= id;
+
+    return _$VersionDataRemoteEntityFromJson(json);
+  }
 
   Map<String, dynamic> toJson() => _$VersionDataRemoteEntityToJson(this);
 }
