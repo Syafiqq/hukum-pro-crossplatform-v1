@@ -22,7 +22,6 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
 }
 
 extension _HukumProFirebaseServiceImpl on HukumProFirebaseServiceImpl {
-  @override
   Future<Map<String, Object?>> _getLatestDataWithIntId(
       {required String path}) async {
     final snapshot =
