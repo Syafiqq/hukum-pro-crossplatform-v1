@@ -6,7 +6,7 @@ import 'package:hukum_pro/infrastructure/firebase/auth/firebase_user_auth_servic
 import 'package:retry/retry.dart';
 
 extension FutureFirebaseAuth on Future {
-  static Future ensureFirebaseIsAuthenticated<T>(
+  static Future<T> ensureFirebaseIsAuthenticated<T>(
     FutureOr Function() fn, {
     bool forceAuthenticated = false,
   }) async {
