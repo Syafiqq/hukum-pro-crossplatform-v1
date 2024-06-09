@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1075323028801",
+    "firebase_url": "https://hukumpro-serverproxy-dev-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "hukumpro-serverproxy-dev",
+    "storage_bucket": "hukumpro-serverproxy-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075323028801:android:23812226223c064bd90dc0",
+        "android_client_info": {
+          "package_name": "com.github.syafiqq.hukumpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075323028801-f5o06epiati89ve0p6usb17hl6q8q84p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPwaZ6wx-qoS3cxiPlG3NGuiFdPQpRWCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075323028801-f5o06epiati89ve0p6usb17hl6q8q84p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075323028801:android:ad09c287668b18e7d90dc0",
+        "android_client_info": {
+          "package_name": "io.localhost.freelancer.statushukum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075323028801-f5o06epiati89ve0p6usb17hl6q8q84p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPwaZ6wx-qoS3cxiPlG3NGuiFdPQpRWCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075323028801-f5o06epiati89ve0p6usb17hl6q8q84p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
