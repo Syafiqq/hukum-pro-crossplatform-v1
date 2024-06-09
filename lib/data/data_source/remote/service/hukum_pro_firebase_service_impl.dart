@@ -14,7 +14,7 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
   Future<VersionDataRemoteEntity> getLatestVersion() {
     return FutureFirebaseAuth.ensureFirebaseIsAuthenticated(
       () async {
-        final data = await _getLatestData(path: 'versions_new/v2');
+        final data = await _getLatestDataWithIntId(path: 'versions_new/v2');
         return VersionDataRemoteEntity.fromJson(data);
       },
     );
@@ -23,7 +23,8 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
 
 extension _HukumProFirebaseServiceImpl on HukumProFirebaseServiceImpl {
   @override
-  Future<Map<String, Object?>> _getLatestData({required String path}) async {
+  Future<Map<String, Object?>> _getLatestDataWithIntId(
+      {required String path}) async {
     final snapshot =
         await _infrastructure.ref(path).orderByKey().limitToLast(1).get();
 
