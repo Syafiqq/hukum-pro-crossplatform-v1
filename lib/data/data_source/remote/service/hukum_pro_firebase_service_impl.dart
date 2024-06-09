@@ -12,10 +12,12 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
 
   @override
   Future<VersionDataRemoteEntity> getLatestVersion() {
-    return FutureFirebaseAuth.ensureFirebaseIsAuthenticated(() async {
-      final data = await _getLatestData(path: 'versions_new/v2');
-      return VersionDataRemoteEntity.fromJson(data);
-    });
+    return FutureFirebaseAuth.ensureFirebaseIsAuthenticated(
+      () async {
+        final data = await _getLatestData(path: 'versions_new/v2');
+        return VersionDataRemoteEntity.fromJson(data);
+      },
+    );
   }
 }
 
