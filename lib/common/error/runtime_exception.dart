@@ -1,4 +1,4 @@
-final class RuntimeException implements Exception {
+class RuntimeException implements Exception {
   final String message;
   final String? code;
   final Exception? internalException;
