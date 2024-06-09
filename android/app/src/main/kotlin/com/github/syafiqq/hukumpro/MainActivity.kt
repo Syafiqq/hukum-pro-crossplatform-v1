@@ -1,4 +1,4 @@
-package com.github.syafiqq.hukum_pro
+package com.github.syafiqq.hukumpro
 
 import io.flutter.embedding.android.FlutterActivity
 
