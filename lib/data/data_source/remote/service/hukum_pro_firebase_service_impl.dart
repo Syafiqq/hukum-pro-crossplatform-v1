@@ -1,6 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:hukum_pro/common/error/data_exception.dart';
-import 'package:hukum_pro/common/helper/util/util_parse_type.dart';
 import 'package:hukum_pro/data/data_source/remote/entity/version_data_remote_entity.dart';
 import 'package:hukum_pro/data/data_source/remote/service/hukum_pro_firebase_service.dart';
 import 'package:hukum_pro/infrastructure/firebase/auth/future_firebase_auth.dart';
@@ -24,19 +23,33 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
 extension _HukumProFirebaseServiceImpl on HukumProFirebaseServiceImpl {
   Future<Map<String, Object?>> _getLatestDataWithIntId(
       {required String path}) async {
-    final snapshot =
-        await _infrastructure.ref(path).orderByKey().limitToLast(1).get();
+    final snapshot = await _infrastructure
+        .ref(path)
+        .orderByKey()
+        .limitToLast(1)
+        .once()
+        .then((v) => v.snapshot);
 
     if (!snapshot.exists) {
       throw const DataException.noData();
     }
 
-    final key = snapshot.key?.toInt();
+    if (snapshot.children.isEmpty) {
+      throw const DataException.noData();
+    }
+
+    final child = snapshot.children.first;
+
+    if (!child.exists) {
+      throw const DataException.noData();
+    }
+
+    final key = child.key;
     if (key == null) {
       throw const DataException.noData();
     }
 
-    final resultMapRaw = snapshot.value as Map<Object?, Object?>?;
+    final resultMapRaw = child.value as Map<Object?, Object?>?;
     final resultMap = resultMapRaw?.map(
       (key, value) => MapEntry(
         key.toString(),
