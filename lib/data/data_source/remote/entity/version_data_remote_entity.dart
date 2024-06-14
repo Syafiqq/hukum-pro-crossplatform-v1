@@ -26,14 +26,5 @@ final class VersionDataRemoteEntity {
   ) =>
       _$VersionDataRemoteEntityFromJson(json);
 
-  factory VersionDataRemoteEntity.fromJsonWithId(
-    Map<String, dynamic> json,
-    int id,
-  ) {
-    json['id'] ??= id;
-
-    return _$VersionDataRemoteEntityFromJson(json);
-  }
-
   Map<String, dynamic> toJson() => _$VersionDataRemoteEntityToJson(this);
 }
