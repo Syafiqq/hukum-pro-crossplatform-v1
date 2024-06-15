@@ -44,8 +44,12 @@ dependencies:
   firebase_auth: 5.0.0
   firebase_database: 11.0.0
 
+  # Storage
+  shared_preferences: 2.2.3
+
   # Misc
   async: 2.11.0
+  synchronized: 3.1.0+1
   retry: 3.1.2
 
   # Annotations
