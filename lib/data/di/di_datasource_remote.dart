@@ -1,3 +1,5 @@
+import 'package:hukum_pro/data/data_source/remote/impl/hukum_pro_remote_data_source.dart';
+import 'package:hukum_pro/data/data_source/remote/impl/hukum_pro_remote_data_source_impl.dart';
 import 'package:hukum_pro/data/data_source/remote/service/hukum_pro_firebase_service.dart';
 import 'package:hukum_pro/data/data_source/remote/service/hukum_pro_firebase_service_impl.dart';
 import 'package:hukum_pro/infrastructure/di/di.dart';
@@ -5,11 +7,18 @@ import 'package:hukum_pro/infrastructure/di/di.dart';
 class DiDatasourceRemote {
   static void setup() {
     _setupRemoteService();
+    _setupRemoteDataSource();
   }
 
   static void _setupRemoteService() {
     di.registerLazySingleton<HukumProFirebaseService>(
       () => HukumProFirebaseServiceImpl(di()),
+    );
+  }
+
+  static void _setupRemoteDataSource() {
+    di.registerLazySingleton<HukumProRemoteDataSource>(
+      () => HukumProRemoteDataSourceImpl(di()),
     );
   }
 }
