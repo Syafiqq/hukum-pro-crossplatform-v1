@@ -13,7 +13,7 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
   Future<VersionDataRemoteEntity> getLatestVersion() {
     return FutureFirebaseAuth.ensureFirebaseIsAuthenticated(
       () async {
-        final data = await _getLatestDataWithIntId(path: 'versions_new/v2');
+        final data = await _getLatestDataWithStringId(path: 'versions_new/v2');
         return VersionDataRemoteEntity.fromJson(data);
       },
     );
@@ -21,7 +21,7 @@ final class HukumProFirebaseServiceImpl implements HukumProFirebaseService {
 }
 
 extension _HukumProFirebaseServiceImpl on HukumProFirebaseServiceImpl {
-  Future<Map<String, Object?>> _getLatestDataWithIntId(
+  Future<Map<String, dynamic>> _getLatestDataWithStringId(
       {required String path}) async {
     final snapshot = await _infrastructure
         .ref(path)
@@ -45,20 +45,17 @@ extension _HukumProFirebaseServiceImpl on HukumProFirebaseServiceImpl {
     }
 
     final key = child.key;
+    final value = child.value;
     if (key == null) {
       throw const DataException.noData();
     }
 
-    final resultMapRaw = child.value as Map<Object?, Object?>?;
-    final resultMap = resultMapRaw?.map(
-      (key, value) => MapEntry(
-        key.toString(),
-        value,
-      ),
-    );
-    if (resultMap == null) {
-      throw const FormatException('Failed to parse data');
+    if (value == null) {
+      throw const DataException.noData();
     }
+
+    final resultMap = Map<String, dynamic>.from(value as Map);
+
     if (!resultMap.containsKey('id')) {
       resultMap['id'] = key;
     }
