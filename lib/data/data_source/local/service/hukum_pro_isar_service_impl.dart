@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:hukum_pro/common/helper/future/future_throttled.dart';
+import 'package:hukum_pro/data/data_source/local/entity/law_menu_order_data_local_entity.dart';
 import 'package:hukum_pro/data/data_source/local/service/hukum_pro_isar_service.dart';
 import 'package:isar/isar.dart';
 
@@ -23,4 +24,13 @@ final class HukumProIsarServiceImpl implements HukumProIsarService {
   }
 
   HukumProIsarServiceImpl(this._futureInfrastructure);
+
+  @override
+  Future<void> replaceLawMenus(List<LawMenuOrderDataLocalEntity> menus) async {
+    final service = await _infrastructure;
+    await service.writeAsync((isar) {
+      isar.lawMenuOrderDataLocalEntitys.clear();
+      isar.lawMenuOrderDataLocalEntitys.putAll(menus);
+    });
+  }
 }
